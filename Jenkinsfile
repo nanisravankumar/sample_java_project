@@ -1,11 +1,6 @@
 pipeline {
 
-    agent {
-        node {
-            label 'master'
-        }
-    }
-
+    agent none
     options {
         buildDiscarder logRotator( 
                     daysToKeepStr: '16', 
@@ -52,7 +47,7 @@ pipeline {
 
         stage('Build Deploy Code') {
             when {
-                branch 'develop'
+                branch 'main'
             }
             steps {
                 sh """
